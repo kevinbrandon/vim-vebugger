@@ -21,8 +21,9 @@ function! vebugger#jdb#start(args)
 		endif
 		call l:debugger.writeLine('stop on '.a:args.entryClass.'.main')
 		call l:debugger.writeLine('run  '.a:args.entryClass.' '.vebugger#util#commandLineArgsForProgram(a:args))
-		call l:debugger.writeLine('monitor where')
 	endif
+
+	call l:debugger.writeLine('monitor where')
 
 	call l:debugger.addReadHandler(function('vebugger#jdb#_readProgramOutput'))
 	call l:debugger.addReadHandler(function('vebugger#jdb#_readWhere'))
